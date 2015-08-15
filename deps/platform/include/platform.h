@@ -2,11 +2,7 @@
 #define _PLATFORM_H_
 
 #ifdef _WIN32
-    #ifdef logger_EXPORTS
-        #define EXPORT __declspec(dllexport)
-    #else
-        #define EXPORT __declspec(dllimport)
-    #endif
+    #define EXPORT __declspec(dllexport)
 
     #define VPRINTF_LENGTH(format, args) _vscprintf(format, args)
     #define VSPRINTF_SAFE(buffer, length, format, args) vsprintf_s(buffer, length, format, args)
