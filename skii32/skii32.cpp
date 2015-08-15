@@ -16,7 +16,11 @@ int main(void) {
     }
 #endif
 
+#ifdef NDEBUG
     logger.set_level(LogLevel::WARN);
+#else
+    logger.set_level(LogLevel::DEBUG);
+#endif
 
     logger.log(LogLevel::DEBUG, "Hello!");
     logger.log(LogLevel::INFO, "Hello!");
