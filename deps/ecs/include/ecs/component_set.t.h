@@ -1,11 +1,11 @@
 #ifndef _COMPONENT_SET_T_H_
 #define _COMPONENT_SET_T_H_
 
-#include "component_set.h"
+#include "ecs/component_set.h"
 
 #include <vector>
 
-#include "component.h"
+#include "ecs/component.h"
 
 #include "platform.h"
 
