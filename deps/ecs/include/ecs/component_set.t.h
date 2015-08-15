@@ -42,10 +42,10 @@ bool ComponentSet::add_component(ComponentClass *component, bool delete_componen
         return false;
     }
 
-    struct ComponentData component_data = {
-        .component = component,
-        .delete_component = delete_component
-    };
+    struct ComponentData component_data;
+
+    component_data.component = component;
+    component_data.delete_component = delete_component;
 
     this->components->push_back(component_data);
 
