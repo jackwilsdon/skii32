@@ -12,6 +12,7 @@ class Logger;
 class EXPORT LogDestination {
 public:
     LogDestination(Logger *logger);
+    LogDestination(const LogDestination &destination);
 
     Logger *get_logger() const;
     virtual void log(LogLevel level, std::string message) const = 0;

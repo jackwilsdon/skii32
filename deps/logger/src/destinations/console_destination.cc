@@ -47,6 +47,10 @@ ConsoleDestination::ConsoleDestination(Logger *logger) : LogDestination(logger) 
     this->set_colored(false);
 }
 
+ConsoleDestination::ConsoleDestination(const ConsoleDestination &destination) : LogDestination(destination) {
+    this->set_colored(destination.is_colored());
+}
+
 bool ConsoleDestination::is_colored() const {
     return this->colored;
 }

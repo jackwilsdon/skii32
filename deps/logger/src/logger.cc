@@ -10,6 +10,14 @@ Logger::Logger() {
     this->set_level(LogLevel::INFO);
 }
 
+Logger::Logger(const Logger &logger) {
+    this->destination = NULL;
+    this->delete_destination = false;
+
+    this->set_destination(logger.destination, false);
+    this->set_level(logger.level);
+}
+
 Logger::~Logger() {
     LogDestination *destination = this->get_destination();
 

@@ -13,6 +13,7 @@ class LogDestination;
 class EXPORT Logger {
 public:
     Logger();
+    Logger(const Logger &logger);
     ~Logger();
 
     LogDestination *get_destination() const;

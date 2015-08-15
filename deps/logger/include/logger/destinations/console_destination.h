@@ -13,6 +13,7 @@ class Logger;
 class EXPORT ConsoleDestination : public LogDestination {
 public:
     ConsoleDestination(Logger *logger);
+    ConsoleDestination(const ConsoleDestination &destination);
 
     bool is_colored() const;
     void set_colored(bool colored);
