@@ -14,7 +14,7 @@ set(logger_SOURCES
 )
 
 set(logger_INCLUDES
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    include
 )
 
 # Iterate each include file and add it to logger_INCLUDE_FILES
