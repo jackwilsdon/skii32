@@ -8,12 +8,12 @@
         #define EXPORT __declspec(dllimport)
     #endif
 
-    #define VSNPRINTF_SAFE(buffer, length, count, format, args) vsnprintf_s(buffer, length, count, format, args)
+    #define VPRINTF_LENGTH(format, args) _vscprintf(format, args)
     #define VSPRINTF_SAFE(buffer, length, format, args) vsprintf_s(buffer, length, format, args)
 #else
     #define EXPORT
 
-    #define VSNPRINTF_SAFE(buffer, length, count, format, args) vsnprintf(buffer, length, format, args)
+    #define VPRINTF_LENGTH(format, args) vsnprintf(NULL, 0, format, args)
     #define VSPRINTF_SAFE(buffer, length, format, args) vsprintf(buffer, format, args)
 #endif
 
