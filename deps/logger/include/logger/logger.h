@@ -4,8 +4,9 @@
 #include <string>
 #include <cstdarg>
 
-#include "logger/platform.h"
 #include "logger/log_level.h"
+
+#include "platform.h"
 
 class LogDestination;
 

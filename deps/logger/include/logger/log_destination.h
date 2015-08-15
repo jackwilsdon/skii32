@@ -3,8 +3,9 @@
 
 #include <string>
 
-#include "logger/platform.h"
 #include "logger/log_level.h"
+
+#include "platform.h"
 
 class Logger;
 

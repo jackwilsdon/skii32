@@ -2,7 +2,8 @@
 #define _LOG_MESSAGE_H_
 
 #include <string>
-#include "logger/platform.h"
+
+#include "platform.h"
 
 enum class LogLevel {
     DEBUG,
