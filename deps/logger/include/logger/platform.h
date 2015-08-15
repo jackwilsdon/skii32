@@ -18,7 +18,7 @@
     #define VPRINTF_LENGTH(format, args) vsnprintf(NULL, 0, format, args)
     #define VSPRINTF_SAFE(buffer, length, format, args) vsprintf(buffer, format, args)
 
-	#define LOCALTIME_SAFE(timedata, currtime) timedata = localtime(currtime)
+    #define LOCALTIME_SAFE(timedata, currtime) localtime_r(currtime, timedata);
 #endif
 
 #endif
