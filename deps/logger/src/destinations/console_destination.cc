@@ -7,13 +7,18 @@ std::string get_time_string() {
     time_t currtime;
     time(&currtime);
 
-    struct tm *timedata = localtime(&currtime);
+    struct tm *timedata = (struct tm *) malloc(sizeof(struct tm));
+
+    LOCALTIME_SAFE(timedata, &currtime);
 
     char buffer[30];
 
     if (strftime(buffer, sizeof(buffer), "%d/%m/%Y %I:%M:%S %p", timedata) == 0) {
+        free(timedata);
         return "";
     }
+
+    free(timedata);
 
     return std::string(buffer);
 }
