@@ -6,9 +6,7 @@ include(CXX11)
 
 require_cxx11()
 
-set(ecs_SOURCES
-    src/component_set.cc
-)
+set(ecs_SOURCES)
 
 set(ecs_INCLUDES
     include
@@ -22,10 +20,7 @@ foreach(INCLUDE_PATH ${ecs_INCLUDES})
 endforeach(INCLUDE_PATH)
 
 # Add source to library
-add_library(ecs SHARED ${ecs_SOURCES} ${ecs_INCLUDE_FILES})
+add_library(ecs INTERFACE)
 
 # Add include directories to library
-target_include_directories(ecs PUBLIC ${ecs_INCLUDES})
-
-# Add dependencies
-target_link_libraries(ecs platform)
+target_include_directories(ecs INTERFACE ${ecs_INCLUDES})
