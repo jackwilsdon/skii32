@@ -14,10 +14,10 @@ class EXPORT ConsoleDestination : public LogDestination {
 public:
     ConsoleDestination(Logger *logger);
 
-    bool is_colored();
+    bool is_colored() const;
     void set_colored(bool colored);
 
-    void log(LogLevel level, std::string message);
+    void log(LogLevel level, std::string message) const;
 
 private:
     bool colored;

@@ -47,7 +47,7 @@ ConsoleDestination::ConsoleDestination(Logger *logger) : LogDestination(logger) 
     this->set_colored(false);
 }
 
-bool ConsoleDestination::is_colored() {
+bool ConsoleDestination::is_colored() const {
     return this->colored;
 }
 
@@ -55,7 +55,7 @@ void ConsoleDestination::set_colored(bool colored) {
     this->colored = colored;
 }
 
-void ConsoleDestination::log(LogLevel level, std::string message) {
+void ConsoleDestination::log(LogLevel level, std::string message) const {
     std::string time_string = get_time_string();
     std::string level_string = LogLevel_name(level, true);
 

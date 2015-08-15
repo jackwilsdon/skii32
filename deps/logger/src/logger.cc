@@ -18,7 +18,7 @@ Logger::~Logger() {
     }
 }
 
-LogDestination *Logger::get_destination() {
+LogDestination *Logger::get_destination() const {
     return this->destination;
 }
 
@@ -31,7 +31,7 @@ void Logger::set_destination(LogDestination *destination, bool delete_destinatio
     this->delete_destination = delete_destination;
 }
 
-LogLevel Logger::get_level() {
+LogLevel Logger::get_level() const {
     return this->level;
 }
 
@@ -39,7 +39,7 @@ void Logger::set_level(LogLevel level) {
     this->level = level;
 }
 
-void Logger::vlog(LogLevel level, std::string format, va_list args) {
+void Logger::vlog(LogLevel level, std::string format, va_list args) const {
     if (level < this->level) {
         return;
     }
@@ -74,7 +74,7 @@ void Logger::vlog(LogLevel level, std::string format, va_list args) {
     destination->log(level, formatted);
 }
 
-void Logger::log(LogLevel level, std::string format, ...) {
+void Logger::log(LogLevel level, std::string format, ...) const {
     va_list args;
     va_start(args, format);
 
@@ -83,11 +83,11 @@ void Logger::log(LogLevel level, std::string format, ...) {
     va_end(args);
 }
 
-void Logger::vlog(std::string format, va_list args) {
+void Logger::vlog(std::string format, va_list args) const {
     this->vlog(LogLevel::INFO, format, args);
 }
 
-void Logger::log(std::string format, ...) {
+void Logger::log(std::string format, ...) const {
     va_list args;
     va_start(args, format);
 
