@@ -17,8 +17,14 @@ set(logger_INCLUDES
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+foreach(INCLUDE_PATH ${logger_INCLUDES})
+    file(GLOB_RECURSE INCLUDE_FILES ${INCLUDE_PATH}/*)
+
+    list(APPEND logger_INCLUDE_FILES ${INCLUDE_FILES})
+endforeach(INCLUDE_PATH)
+
 # Add source to library
-add_library(logger SHARED ${logger_SOURCES})
+add_library(logger SHARED ${logger_SOURCES} ${logger_INCLUDE_FILES})
 
 # Add include directories to library
 target_include_directories(logger PUBLIC ${logger_INCLUDES})
