@@ -63,7 +63,7 @@ void Logger::vlog(LogLevel level, std::string format, va_list args) {
         return;
     }
 
-    if (vsprintf(formatted_str, format_str, args) < 0) {
+	if (VSPRINTF_SAFE(formatted_str, formatted_length, format_str, args) < 0) {
         free(formatted_str);
         return;
     }
