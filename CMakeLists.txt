@@ -15,7 +15,7 @@ require_cxx11()
 add_subdirectory(deps)
 
 set(skii32_SOURCES
-    skii32/skii32.cpp
+    skii32/skii32.cc
 )
 
 add_executable(skii32 ${skii32_SOURCES})
