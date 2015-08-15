@@ -41,7 +41,7 @@ bool ComponentSet::add_component(ComponentClass *component, bool delete_componen
         .delete_component = delete_component
     };
 
-    this->components.push_back(component_data);
+    this->components->push_back(component_data);
 
     return true;
 }
