@@ -17,6 +17,7 @@ set(logger_INCLUDES
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+# Iterate each include file and add it to logger_INCLUDE_FILES
 foreach(INCLUDE_PATH ${logger_INCLUDES})
     file(GLOB_RECURSE INCLUDE_FILES ${INCLUDE_PATH}/*)
 
