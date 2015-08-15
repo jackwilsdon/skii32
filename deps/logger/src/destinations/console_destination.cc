@@ -51,12 +51,12 @@ void ConsoleDestination::set_colored(bool colored) {
 }
 
 void ConsoleDestination::log(LogLevel level, std::string message) {
-	std::string time_string = get_time_string();
-	std::string level_string = LogLevel_name(level, true);
+    std::string time_string = get_time_string();
+    std::string level_string = LogLevel_name(level, true);
 
 #ifdef _WIN32
-	std::string color_string = "";
-	std::string reset_string = "";
+    std::string color_string = "";
+    std::string reset_string = "";
 #else
     std::string color_string = this->is_colored() ? get_color_string(level) : "";
     std::string reset_string = this->is_colored() ? get_reset_string() : "";
