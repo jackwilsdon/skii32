@@ -7,8 +7,22 @@
 #include "logger/logger.h"
 #include "logger/destinations/console_destination.h"
 
+#include "ecs/entity.t.h"
+#include "ecs/component.h"
+
+class SimpleComponent: public Component {
+public:
+    static const unsigned int IDENTIFIER = 1;
+
+    void log(Logger logger) {
+        logger.log(LogLevel::DEBUG, "Hello from SimpleComponent!");
+    }
+};
+
 int main(void) {
     Logger logger;
+
+    Entity entity;
 
 #ifdef __unix
     if(isatty(STDOUT_FILENO)) {
@@ -22,11 +36,9 @@ int main(void) {
     logger.set_level(LogLevel::DEBUG);
 #endif
 
-    logger.log(LogLevel::DEBUG, "Hello!");
-    logger.log(LogLevel::INFO, "Hello!");
-    logger.log(LogLevel::WARN, "Hello!");
-    logger.log(LogLevel::ERROR, "Hello!");
-    logger.log(LogLevel::FATAL, "Hello!");
+    entity.add_component(SimpleComponent());
+
+    entity.get_component<SimpleComponent>()->log(logger);
 
     return EXIT_SUCCESS;
 }

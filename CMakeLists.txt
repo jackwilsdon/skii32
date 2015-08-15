@@ -19,4 +19,4 @@ set(skii32_SOURCES
 )
 
 add_executable(skii32 ${skii32_SOURCES})
-target_link_libraries(skii32 logger)
+target_link_libraries(skii32 logger ecs)
