@@ -3,6 +3,25 @@
 #include <type_traits>
 #include "ecs/component.h"
 
+ComponentSet::ComponentSet() {
+    this->components = new std::vector<ComponentData>();
+}
+
+ComponentSet::~ComponentSet() {
+    std::vector<ComponentData> components = *this->components;
+    std::vector<ComponentData>::iterator iterator;
+
+    for (iterator = components.begin(); iterator < components.end(); iterator++) {
+        ComponentData component_data = *iterator;
+
+        if (component_data.delete_component) {
+            delete component_data.component;
+        }
+    }
+
+    delete this->components;
+}
+
 template<class ComponentClass>
 bool ComponentSet::add_component(ComponentClass *component, bool delete_component) {
     if (!std::is_base_of<Component, ComponentClass>()) {
@@ -33,12 +52,12 @@ ComponentClass *ComponentSet::get_component() {
         return false;
     }
 
-    std::vector<ComponentData> components = this->components;
+    std::vector<ComponentData> components = *this->components;
     std::vector<ComponentData>::iterator iterator;
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
-        ComponentData *component_data = *iterator;
-        ComponentClass *component = static_cast<ComponentClass *>(component_data->component);
+        ComponentData component_data = *iterator;
+        ComponentClass *component = static_cast<ComponentClass *>(component_data.component);
 
         if (component->IDENTIFIER == ComponentClass::IDENTIFIER) {
             return component;
@@ -54,12 +73,12 @@ bool ComponentSet::remove_component() {
         return false;
     }
 
-    std::vector<ComponentData> components = this->components;
+    std::vector<ComponentData> components = *this->components;
     std::vector<ComponentData>::iterator iterator = components.begin();
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
-        ComponentData *component_data = *iterator;
-        ComponentClass *component = static_cast<ComponentClass *>(component_data->component);
+        ComponentData component_data = *iterator;
+        ComponentClass *component = static_cast<ComponentClass *>(component_data.component);
 
         if (component->IDENTIFIER == ComponentClass::IDENTIFIER) {
             components.erase(iterator);
