@@ -10,7 +10,7 @@
 #include "platform.h"
 
 ComponentSet::ComponentSet() {
-    this->components = new std::vector<ComponentData>();
+    components = new std::vector<ComponentData>();
 }
 
 ComponentSet::~ComponentSet() {
@@ -38,7 +38,7 @@ bool ComponentSet::add_component(ComponentClass *component, bool delete_componen
         return false;
     }
 
-    if (this->get_component<ComponentClass>() != nullptr) {
+    if (get_component<ComponentClass>() != nullptr) {
         return false;
     }
 
@@ -47,7 +47,7 @@ bool ComponentSet::add_component(ComponentClass *component, bool delete_componen
     component_data.component = component;
     component_data.delete_component = delete_component;
 
-    this->components->push_back(component_data);
+    components->push_back(component_data);
 
     return true;
 }
