@@ -11,21 +11,29 @@
 
 ComponentSet::ComponentSet() {
     components = new std::vector<ComponentData>();
+    delete_components = true;
+}
+
+ComponentSet::ComponentSet(const ComponentSet &set) {
+    components = set.components;
+    delete_components = false;
 }
 
 ComponentSet::~ComponentSet() {
-    std::vector<ComponentData> components = *this->components;
-    std::vector<ComponentData>::iterator iterator;
+    if (delete_components) {
+        std::vector<ComponentData> components = *this->components;
+        std::vector<ComponentData>::iterator iterator;
 
-    for (iterator = components.begin(); iterator < components.end(); iterator++) {
-        ComponentData component_data = *iterator;
+        for (iterator = components.begin(); iterator < components.end(); iterator++) {
+            ComponentData component_data = *iterator;
 
-        if (component_data.delete_component) {
-            delete component_data.component;
+            if (component_data.delete_component) {
+                delete component_data.component;
+            }
         }
-    }
 
-    delete this->components;
+        delete this->components;
+    }
 }
 
 template<class ComponentClass>
