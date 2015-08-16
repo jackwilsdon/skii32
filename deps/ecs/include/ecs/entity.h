@@ -7,19 +7,19 @@
 
 class EXPORT Entity {
 public:
-    template<class ComponentClass>
-    bool add_component(ComponentClass component);
+    template<typename ComponentType>
+    bool add_component(ComponentType component);
 
-    template<class ComponentClass>
-    bool add_component(ComponentClass *component, bool delete_component = false);
+    template<typename ComponentType>
+    bool add_component(ComponentType *component, bool delete_component = false);
 
-    template<class ComponentClass, typename... Args>
-    ComponentClass *add_component(Args&&... args);
+    template<typename ComponentType, typename... Args>
+    ComponentType *add_component(Args&&... args);
 
-    template<class ComponentClass>
-    ComponentClass *get_component() const;
+    template<typename ComponentType>
+    ComponentType *get_component() const;
 
-    template<class ComponentClass>
+    template<typename ComponentType>
     bool remove_component();
 
 private:

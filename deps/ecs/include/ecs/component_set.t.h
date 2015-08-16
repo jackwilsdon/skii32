@@ -33,9 +33,9 @@ ComponentSet::~ComponentSet() {
     }
 }
 
-template<class ComponentClass>
-bool ComponentSet::add_component(ComponentClass *component, bool delete_component) {
-    if (!std::is_base_of<Component, ComponentClass>()) {
+template<typename ComponentType>
+bool ComponentSet::add_component(ComponentType *component, bool delete_component) {
+    if (!std::is_base_of<Component, ComponentType>()) {
         return false;
     }
 
@@ -43,7 +43,7 @@ bool ComponentSet::add_component(ComponentClass *component, bool delete_componen
         return false;
     }
 
-    if (get_component<ComponentClass>() != nullptr) {
+    if (get_component<ComponentType>() != nullptr) {
         return false;
     }
 
@@ -57,9 +57,9 @@ bool ComponentSet::add_component(ComponentClass *component, bool delete_componen
     return true;
 }
 
-template<class ComponentClass>
-ComponentClass *ComponentSet::get_component() const {
-    if (!std::is_base_of<Component, ComponentClass>()) {
+template<typename ComponentType>
+ComponentType *ComponentSet::get_component() const {
+    if (!std::is_base_of<Component, ComponentType>()) {
         return nullptr;
     }
 
@@ -68,9 +68,9 @@ ComponentClass *ComponentSet::get_component() const {
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
         ComponentData component_data = *iterator;
-        ComponentClass *component = static_cast<ComponentClass *>(component_data.component);
+        ComponentType *component = static_cast<ComponentType *>(component_data.component);
 
-        if (component->IDENTIFIER == ComponentClass::IDENTIFIER) {
+        if (component->IDENTIFIER == ComponentType::IDENTIFIER) {
             return component;
         }
     }
@@ -78,9 +78,9 @@ ComponentClass *ComponentSet::get_component() const {
     return nullptr;
 }
 
-template<class ComponentClass>
+template<typename ComponentType>
 bool ComponentSet::remove_component() {
-    if (!std::is_base_of<Component, ComponentClass>()) {
+    if (!std::is_base_of<Component, ComponentType>()) {
         return false;
     }
 
@@ -89,9 +89,9 @@ bool ComponentSet::remove_component() {
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
         ComponentData component_data = *iterator;
-        ComponentClass *component = static_cast<ComponentClass *>(component_data.component);
+        ComponentType *component = static_cast<ComponentType *>(component_data.component);
 
-        if (component->IDENTIFIER == ComponentClass::IDENTIFIER) {
+        if (component->IDENTIFIER == ComponentType::IDENTIFIER) {
             components.erase(iterator);
             return true;
         }
