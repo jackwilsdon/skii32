@@ -1,18 +1,22 @@
-#ifndef _ENTITY_H_
-#define _ENTITY_H_
-
-#include "component_set.t.h"
+#ifndef _TYPE_IDENTIFIER_H_
+#define _TYPE_IDENTIFIER_H_
 
 #include "platform.h"
 
-class EXPORT Entity {
-    typedef std::size_t TypeIdentifier;
+typedef std::size_t Identifier;
 
+template<typename BaseClass>
+class TypeIdentifier {
 public:
-    template<class ComponentClass>
+    template<typename SubClass>
+    static Identifier GetIdentifier() {
+        static const Identifier id = next_id++;
+
+        return id;
+    }
 
 private:
-    static TypeIdentifier next_id;
+    static Identifier next_id;
 };
 
 #endif
