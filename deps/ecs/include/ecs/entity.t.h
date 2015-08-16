@@ -17,13 +17,12 @@ template<class ComponentClass, typename... Args>
 ComponentClass *Entity::add_component(Args&&... args) {
     ComponentClass *component = new ComponentClass(std::forward<Args>(args)...);
 
-    if (this->add_component(component, true)) {
-        return component;
+    if (!this->add_component(component, true)) {
+        delete component;
+        return nullptr;
     }
 
-    delete component;
-
-    return nullptr;
+    return component;
 }
 
 template<class ComponentClass>
