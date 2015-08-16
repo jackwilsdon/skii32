@@ -5,11 +5,11 @@
 
 typedef std::size_t Identifier;
 
-template<typename BaseType>
+template<template<class> class BaseClass>
 class EXPORT TypeIdentifier {
 public:
     template<typename SubType>
-    static Identifier GetIdentifier() {
+    static Identifier get_type_identifier() {
         static const Identifier id = next_id++;
 
         return id;
