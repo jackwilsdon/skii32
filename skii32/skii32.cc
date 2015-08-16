@@ -36,7 +36,7 @@ int main(void) {
     logger.set_level(LogLevel::DEBUG);
 #endif
 
-    entity.add_component(SimpleComponent());
+    entity.add_component<SimpleComponent>();
 
     entity.get_component<SimpleComponent>()->log(logger);
 
