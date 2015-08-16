@@ -13,6 +13,19 @@ bool Entity::add_component(ComponentClass *component, bool delete_component) {
     return this->component_set.add_component(component, delete_component);
 }
 
+template<class ComponentClass, typename... Args>
+ComponentClass *Entity::add_component(Args&&... args) {
+    ComponentClass *component = new ComponentClass(std::forward<Args>(args)...);
+
+    if (this->add_component(component, true)) {
+        return component;
+    }
+
+    delete component;
+
+    return nullptr;
+}
+
 template<class ComponentClass>
 ComponentClass *Entity::get_component() {
     return this->component_set.get_component<ComponentClass>();

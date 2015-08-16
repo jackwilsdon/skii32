@@ -13,6 +13,9 @@ public:
     template<class ComponentClass>
     bool add_component(ComponentClass *component, bool delete_component = false);
 
+    template<class ComponentClass, typename... Args>
+    ComponentClass *add_component(Args&&... args);
+
     template<class ComponentClass>
     ComponentClass *get_component();
 
