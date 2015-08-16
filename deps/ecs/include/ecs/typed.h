@@ -5,7 +5,7 @@
 
 #include "platform.h"
 
-template<template<class> class BaseClass, typename SubType>
+template<template<typename> class BaseClass, typename SubType>
 class EXPORT Typed {
 public:
     static Identifier get_type_identifier();

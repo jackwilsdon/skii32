@@ -7,7 +7,7 @@
 
 #include "platform.h"
 
-template<template<class> class BaseClass, typename SubType>
+template<template<typename> class BaseClass, typename SubType>
 Identifier Typed<BaseClass, SubType>::get_type_identifier() {
     return TypeIdentifier<BaseClass>::template get_type_identifier<SubType>();
 }
