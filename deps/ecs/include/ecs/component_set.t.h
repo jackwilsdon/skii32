@@ -10,7 +10,6 @@
 #include "platform.h"
 
 ComponentSet::ComponentSet() {
-    components = new std::vector<ComponentData>();
     delete_components = true;
 }
 
@@ -21,7 +20,7 @@ ComponentSet::ComponentSet(const ComponentSet &set) {
 
 ComponentSet::~ComponentSet() {
     if (delete_components) {
-        std::vector<ComponentData> components = *this->components;
+        std::vector<ComponentData> components = this->components;
         std::vector<ComponentData>::iterator iterator;
 
         for (iterator = components.begin(); iterator < components.end(); iterator++) {
@@ -31,8 +30,6 @@ ComponentSet::~ComponentSet() {
                 delete component_data.component;
             }
         }
-
-        delete this->components;
     }
 }
 
@@ -55,7 +52,7 @@ bool ComponentSet::add_component(ComponentClass *component, bool delete_componen
     component_data.component = component;
     component_data.delete_component = delete_component;
 
-    components->push_back(component_data);
+    components.push_back(component_data);
 
     return true;
 }
@@ -66,7 +63,7 @@ ComponentClass *ComponentSet::get_component() const {
         return nullptr;
     }
 
-    std::vector<ComponentData> components = *this->components;
+    std::vector<ComponentData> components = this->components;
     std::vector<ComponentData>::iterator iterator;
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
@@ -87,7 +84,7 @@ bool ComponentSet::remove_component() {
         return false;
     }
 
-    std::vector<ComponentData> components = *this->components;
+    std::vector<ComponentData> components = this->components;
     std::vector<ComponentData>::iterator iterator = components.begin();
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {

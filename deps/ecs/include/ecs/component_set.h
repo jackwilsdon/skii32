@@ -12,6 +12,8 @@ struct EXPORT ComponentData {
     bool delete_component;
 };
 
+template class EXPORT std::vector<ComponentData>;
+
 class EXPORT ComponentSet {
 public:
     ComponentSet();
@@ -28,7 +30,7 @@ public:
     bool remove_component();
 
 private:
-    std::vector<ComponentData> *components;
+    std::vector<ComponentData> components;
     bool delete_components;
 };
 
