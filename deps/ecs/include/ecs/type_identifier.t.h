@@ -3,7 +3,7 @@
 
 #include "ecs/type_identifier.h"
 
-template <typename BaseClass>
-Identifier TypeIdentifier<BaseClass>::next_id = 0;
+template <typename BaseType>
+Identifier TypeIdentifier<BaseType>::next_id = 0;
 
 #endif
