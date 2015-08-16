@@ -26,7 +26,7 @@ ComponentClass *Entity::add_component(Args&&... args) {
 }
 
 template<class ComponentClass>
-ComponentClass *Entity::get_component() {
+ComponentClass *Entity::get_component() const {
     return this->component_set.get_component<ComponentClass>();
 }
 

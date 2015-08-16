@@ -17,7 +17,7 @@ public:
     ComponentClass *add_component(Args&&... args);
 
     template<class ComponentClass>
-    ComponentClass *get_component();
+    ComponentClass *get_component() const;
 
     template<class ComponentClass>
     bool remove_component();

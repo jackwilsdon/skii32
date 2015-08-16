@@ -53,7 +53,7 @@ bool ComponentSet::add_component(ComponentClass *component, bool delete_componen
 }
 
 template<class ComponentClass>
-ComponentClass *ComponentSet::get_component() {
+ComponentClass *ComponentSet::get_component() const {
     if (!std::is_base_of<Component, ComponentClass>()) {
         return nullptr;
     }

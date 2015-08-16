@@ -21,7 +21,7 @@ public:
     bool add_component(ComponentClass *component, bool delete_component = false);
 
     template<class ComponentClass>
-    ComponentClass *get_component();
+    ComponentClass *get_component() const;
 
     template<class ComponentClass>
     bool remove_component();
