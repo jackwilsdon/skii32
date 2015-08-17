@@ -1,7 +1,7 @@
 #ifndef _ENTITY_H_
 #define _ENTITY_H_
 
-#include "component_set.t.h"
+#include "ecs/component_set.h"
 
 #include "platform.h"
 

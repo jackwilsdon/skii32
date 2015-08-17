@@ -3,6 +3,8 @@
 
 #include "ecs/entity.h"
 
+#include "ecs/component_set.t.h"
+
 template<typename ComponentType>
 bool Entity::add_component(ComponentType component) {
     return add_component(&component, false);
