@@ -6,6 +6,11 @@
 #include "ecs/component_set.t.h"
 
 template<typename ComponentType>
+ComponentType *Entity::get_component() const {
+    return component_set.get_component<ComponentType>();
+}
+
+template<typename ComponentType>
 bool Entity::add_component(ComponentType component) {
     return add_component(&component, false);
 }
@@ -25,11 +30,6 @@ ComponentType *Entity::add_component(Args&&... args) {
     }
 
     return component;
-}
-
-template<typename ComponentType>
-ComponentType *Entity::get_component() const {
-    return component_set.get_component<ComponentType>();
 }
 
 template<typename ComponentType>

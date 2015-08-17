@@ -8,6 +8,9 @@
 class EXPORT Entity {
 public:
     template<typename ComponentType>
+    ComponentType *get_component() const;
+
+    template<typename ComponentType>
     bool add_component(ComponentType component);
 
     template<typename ComponentType>
@@ -15,9 +18,6 @@ public:
 
     template<typename ComponentType, typename... Args>
     ComponentType *add_component(Args&&... args);
-
-    template<typename ComponentType>
-    ComponentType *get_component() const;
 
     template<typename ComponentType>
     bool remove_component();
