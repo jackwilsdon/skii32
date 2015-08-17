@@ -5,7 +5,7 @@
 
 typedef std::size_t Identifier;
 
-class TypeIdentifier {
+class EXPORT TypeIdentifier {
 public:
     template<typename Type>
     static Identifier get_identifier() {

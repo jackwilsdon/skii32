@@ -3,7 +3,9 @@
 
 #include "ecs/type_identifier.h"
 
-class ComponentTypeFilter {
+#include "platform.h"
+
+class EXPORT ComponentTypeFilter {
 public:
     ComponentTypeFilter();
     ComponentTypeFilter(const ComponentTypeFilter &filter);
