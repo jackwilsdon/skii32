@@ -63,7 +63,7 @@ bool ComponentSet::add_component(ComponentType *component, bool delete_component
         return false;
     }
 
-    if (get_component<ComponentType>() != nullptr) {
+    if (!contains_component<ComponentType>()) {
         return false;
     }
 
