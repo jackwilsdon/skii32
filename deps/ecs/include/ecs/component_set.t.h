@@ -53,6 +53,11 @@ ComponentType *ComponentSet::get_component() const {
 }
 
 template<typename ComponentType>
+bool ComponentSet::contains_component() const {
+    return get_component<ComponentType>() != nullptr;
+}
+
+template<typename ComponentType>
 bool ComponentSet::add_component(ComponentType *component, bool delete_component) {
     if (!std::is_base_of<Component, ComponentType>()) {
         return false;

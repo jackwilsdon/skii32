@@ -27,6 +27,9 @@ public:
     ComponentType *get_component() const;
 
     template<typename ComponentType>
+    bool contains_component() const;
+
+    template<typename ComponentType>
     bool add_component(ComponentType *component, bool delete_component = false);
 
     template<typename ComponentType>
