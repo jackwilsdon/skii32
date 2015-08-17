@@ -61,8 +61,7 @@ ComponentType *ComponentSet::get_component() const {
         return nullptr;
     }
 
-    std::vector<ComponentData> components = this->components;
-    std::vector<ComponentData>::iterator iterator;
+    std::vector<ComponentData>::const_iterator iterator;
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
         ComponentData component_data = *iterator;
