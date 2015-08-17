@@ -34,6 +34,25 @@ ComponentSet::~ComponentSet() {
 }
 
 template<typename ComponentType>
+ComponentType *ComponentSet::get_component() const {
+    if (!std::is_base_of<Component, ComponentType>()) {
+        return nullptr;
+    }
+
+    std::vector<ComponentData>::const_iterator iterator;
+
+    for (iterator = components.begin(); iterator < components.end(); iterator++) {
+        ComponentData component_data = *iterator;
+
+        if (component_data.identifier == TypeIdentifier::get_identifier<ComponentType>()) {
+            return static_cast<ComponentType *>(component_data.component);
+        }
+    }
+
+    return nullptr;
+}
+
+template<typename ComponentType>
 bool ComponentSet::add_component(ComponentType *component, bool delete_component) {
     if (!std::is_base_of<Component, ComponentType>()) {
         return false;
@@ -52,25 +71,6 @@ bool ComponentSet::add_component(ComponentType *component, bool delete_component
     components.push_back(component_data);
 
     return true;
-}
-
-template<typename ComponentType>
-ComponentType *ComponentSet::get_component() const {
-    if (!std::is_base_of<Component, ComponentType>()) {
-        return nullptr;
-    }
-
-    std::vector<ComponentData>::const_iterator iterator;
-
-    for (iterator = components.begin(); iterator < components.end(); iterator++) {
-        ComponentData component_data = *iterator;
-
-        if (component_data.identifier == TypeIdentifier::get_identifier<ComponentType>()) {
-            return static_cast<ComponentType *>(component_data.component);
-        }
-    }
-
-    return nullptr;
 }
 
 template<typename ComponentType>

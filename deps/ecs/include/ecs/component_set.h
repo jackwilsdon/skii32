@@ -24,10 +24,10 @@ public:
     ~ComponentSet();
 
     template<typename ComponentType>
-    bool add_component(ComponentType *component, bool delete_component = false);
+    ComponentType *get_component() const;
 
     template<typename ComponentType>
-    ComponentType *get_component() const;
+    bool add_component(ComponentType *component, bool delete_component = false);
 
     template<typename ComponentType>
     bool remove_component();
