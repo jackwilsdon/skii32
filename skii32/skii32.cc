@@ -12,8 +12,6 @@
 
 class SimpleComponent: public Component {
 public:
-    static const unsigned int IDENTIFIER = 1;
-
     void log(Logger logger) {
         logger.log(LogLevel::DEBUG, "Hello from SimpleComponent!");
     }
