@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "ecs/component.h"
+#include "ecs/type_identifier.t.h"
 
 #include "platform.h"
 
@@ -39,10 +40,6 @@ bool ComponentSet::add_component(ComponentType *component, bool delete_component
         return false;
     }
 
-    if (component->IDENTIFIER == Component::INVALID_IDENTIFIER) {
-        return false;
-    }
-
     if (get_component<ComponentType>() != nullptr) {
         return false;
     }
@@ -50,6 +47,7 @@ bool ComponentSet::add_component(ComponentType *component, bool delete_component
     struct ComponentData component_data;
 
     component_data.component = component;
+    component_data.identifier = TypeIdentifier::get_identifier<ComponentType>();
     component_data.delete_component = delete_component;
 
     components.push_back(component_data);
@@ -68,10 +66,9 @@ ComponentType *ComponentSet::get_component() const {
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
         ComponentData component_data = *iterator;
-        ComponentType *component = static_cast<ComponentType *>(component_data.component);
 
-        if (component->IDENTIFIER == ComponentType::IDENTIFIER) {
-            return component;
+        if (component_data.identifier == TypeIdentifier::get_identifier<ComponentType>()) {
+            return static_cast<ComponentType *>(component_data.component);
         }
     }
 
@@ -89,9 +86,8 @@ bool ComponentSet::remove_component() {
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
         ComponentData component_data = *iterator;
-        ComponentType *component = static_cast<ComponentType *>(component_data.component);
 
-        if (component->IDENTIFIER == ComponentType::IDENTIFIER) {
+        if (component_data.identifier == TypeIdentifier::get_identifier<ComponentType>()) {
             components.erase(iterator);
             return true;
         }

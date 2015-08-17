@@ -3,10 +3,6 @@
 
 #include "platform.h"
 
-class EXPORT Component {
-public:
-    static const unsigned int INVALID_IDENTIFIER = 0;
-    static const unsigned int IDENTIFIER = INVALID_IDENTIFIER;
-};
+class EXPORT Component {};
 
 #endif

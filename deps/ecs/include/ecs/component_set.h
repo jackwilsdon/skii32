@@ -3,12 +3,15 @@
 
 #include <vector>
 
+#include "ecs/type_identifier.h"
+
 #include "platform.h"
 
 class Component;
 
 struct EXPORT ComponentData {
     Component *component;
+    Identifier identifier;
     bool delete_component;
 };
 
