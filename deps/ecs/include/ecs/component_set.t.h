@@ -21,7 +21,6 @@ ComponentSet::ComponentSet(const ComponentSet &set) {
 
 ComponentSet::~ComponentSet() {
     if (delete_components) {
-        std::vector<ComponentData> components = this->components;
         std::vector<ComponentData>::iterator iterator;
 
         for (iterator = components.begin(); iterator < components.end(); iterator++) {
@@ -80,8 +79,7 @@ bool ComponentSet::remove_component() {
         return false;
     }
 
-    std::vector<ComponentData> components = this->components;
-    std::vector<ComponentData>::iterator iterator = components.begin();
+    std::vector<ComponentData>::iterator iterator;
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
         ComponentData component_data = *iterator;
