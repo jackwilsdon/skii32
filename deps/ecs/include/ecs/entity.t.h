@@ -11,6 +11,11 @@ ComponentType *Entity::get_component() const {
 }
 
 template<typename ComponentType>
+bool Entity::contains_component() const {
+    return component_set.contains_component<ComponentType>();
+}
+
+template<typename ComponentType>
 bool Entity::add_component(ComponentType component) {
     return add_component(&component, false);
 }
