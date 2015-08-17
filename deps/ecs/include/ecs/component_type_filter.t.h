@@ -5,9 +5,9 @@
 
 #include <algorithm>
 
-ComponentTypeFilter::ComponentFilter() {}
+ComponentTypeFilter::ComponentTypeFilter() {}
 
-ComponentTypeFilter::ComponentFilter(const ComponentFilter &filter) {
+ComponentTypeFilter::ComponentTypeFilter(const ComponentTypeFilter &filter) {
     components = filter.components;
 }
 
