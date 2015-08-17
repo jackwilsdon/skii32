@@ -1,12 +1,13 @@
-#ifndef _COMPONENT_FILTER_H_
-#define _COMPONENT_FILTER_H_
+#ifndef _COMPONENT_TYPE_FILTER_H_
+#define _COMPONENT_TYPE_FILTER_H_
 
+#include "ecs/component_filter.h"
 #include "ecs/type_identifier.h"
 
-class ComponentFilter {
+class ComponentTypeFilter : ComponentFilter {
 public:
-    ComponentFilter();
-    ComponentFilter(const ComponentFilter &filter);
+    ComponentTypeFilter();
+    ComponentTypeFilter(const ComponentTypeFilter &filter);
 
     template<typename ComponentType>
     bool contains_component() const;
@@ -15,7 +16,7 @@ public:
     bool add_component();
 
     template<typename ComponentType>
-    bool remove_component();
+    bool remove_component();;
 
 private:
     std::vector<Identifier> components;

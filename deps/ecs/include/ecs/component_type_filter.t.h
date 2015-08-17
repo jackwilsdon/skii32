@@ -1,18 +1,18 @@
-#ifndef _COMPONENT_FILTER_T_H_
-#define _COMPONENT_FILTER_T_H_
+#ifndef _COMPONENT_TYPE_FILTER_T_H_
+#define _COMPONENT_TYPE_FILTER_T_H_
 
 #include "ecs/component_filter.h"
 
 #include <algorithm>
 
-ComponentFilter::ComponentFilter() {}
+ComponentTypeFilter::ComponentFilter() {}
 
-ComponentFilter::ComponentFilter(const ComponentFilter &filter) {
+ComponentTypeFilter::ComponentFilter(const ComponentFilter &filter) {
     components = filter.components;
 }
 
 template<typename ComponentType>
-bool ComponentFilter::contains_component() const {
+bool ComponentTypeFilter::contains_component() const {
     if (!std::is_base_of<Component, ComponentType>()) {
         return false;
     }
@@ -25,7 +25,7 @@ bool ComponentFilter::contains_component() const {
 }
 
 template<typename ComponentType>
-bool ComponentFilter::add_component() {
+bool ComponentTypeFilter::add_component() {
     if (!std::is_base_of<Component, ComponentType>()) {
         return false;
     }
@@ -40,7 +40,7 @@ bool ComponentFilter::add_component() {
 }
 
 template<typename ComponentType>
-bool ComponentFilter::remove_component() {
+bool ComponentTypeFilter::remove_component() {
     if (!std::is_base_of<Component, ComponentType>()) {
         return false;
     }
