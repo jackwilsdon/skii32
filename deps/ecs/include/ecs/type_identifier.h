@@ -7,7 +7,7 @@ typedef std::size_t Identifier;
 
 class TypeIdentifier {
 public:
-    template<class SubClass>
+    template<typename Type>
     static Identifier get_identifier() {
         static const Identifier current_identifier = ++next_identifier;
 
