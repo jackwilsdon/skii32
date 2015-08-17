@@ -84,6 +84,10 @@ bool ComponentSet::remove_component() {
         return false;
     }
 
+    if (!contains_component<ComponentType>()) {
+        return false;
+    }
+
     std::vector<ComponentData>::iterator iterator;
 
     for (iterator = components.begin(); iterator < components.end(); iterator++) {
