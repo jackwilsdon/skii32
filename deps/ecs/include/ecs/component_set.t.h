@@ -86,6 +86,11 @@ bool ComponentSet::remove_component() {
 
         if (component_data.identifier == TypeIdentifier::get_identifier<ComponentType>()) {
             components.erase(iterator);
+
+            if (component_data.delete_component) {
+                delete component_data.component;
+            }
+
             return true;
         }
     }
