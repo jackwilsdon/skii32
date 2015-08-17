@@ -16,7 +16,7 @@ public:
     bool add_component();
 
     template<typename ComponentType>
-    bool remove_component();;
+    bool remove_component();
 
 private:
     std::vector<Identifier> components;
