@@ -1,7 +1,7 @@
 #ifndef _COMPONENT_TYPE_FILTER_T_H_
 #define _COMPONENT_TYPE_FILTER_T_H_
 
-#include "ecs/component_filter.h"
+#include "ecs/component_type_filter.h"
 
 #include <algorithm>
 

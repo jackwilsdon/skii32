@@ -1,7 +1,6 @@
 #ifndef _COMPONENT_TYPE_FILTER_H_
 #define _COMPONENT_TYPE_FILTER_H_
 
-#include "ecs/component_type_filter.h"
 #include "ecs/type_identifier.h"
 
 class ComponentTypeFilter {
