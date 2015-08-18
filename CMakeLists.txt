@@ -15,7 +15,7 @@ require_cxx11()
 add_subdirectory(deps)
 
 set(skii32_SOURCES
-    skii32/skii32.cc
+    src/skii32.cc
 )
 
 set(skii32_INCLUDES
