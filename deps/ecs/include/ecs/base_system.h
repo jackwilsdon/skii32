@@ -13,8 +13,9 @@ public:
     BaseSystem(const BaseSystem &system);
 
     void setup();
-    virtual void update_filter(ComponentTypeFilter *filter) = 0;
     bool should_execute(Component *component, Identifier identifier) const;
+
+    virtual void update_filter(ComponentTypeFilter *filter) = 0;
     virtual void execute(Component *component, Identifier identifier) = 0;
 
 private:
