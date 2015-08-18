@@ -6,7 +6,7 @@
 
 #include "logger/log_level.h"
 
-#include "platform.h"
+#include "platform/platform.h"
 
 class LogDestination;
 
