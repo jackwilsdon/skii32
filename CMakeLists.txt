@@ -18,5 +18,19 @@ set(skii32_SOURCES
     skii32/skii32.cc
 )
 
-add_executable(skii32 ${skii32_SOURCES})
+set(skii32_INCLUDES
+    include
+)
+
+# Iterate each include file and add it to logger_INCLUDE_FILES
+foreach(INCLUDE_PATH ${logger_INCLUDES})
+    file(GLOB_RECURSE INCLUDE_FILES ${INCLUDE_PATH}/*)
+
+    list(APPEND logger_INCLUDE_FILES ${INCLUDE_FILES})
+endforeach(INCLUDE_PATH)
+
+# Add source to executable
+add_executable(skii32 ${skii32_SOURCES} ${skii32_INCLUDE_FILES})
+
+# Add dependencies
 target_link_libraries(skii32 logger)
