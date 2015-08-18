@@ -19,7 +19,11 @@ bool ComponentTypeFilter::contains_component() const {
 
     Identifier component_identifier = TypeIdentifier::get_identifier<ComponentType>();
 
-    std::vector<Identifier>::const_iterator iterator = std::find(components.begin(), components.end(), component_identifier);
+    return contains_identifier(component_identifier);
+}
+
+bool ComponentTypeFilter::contains_identifier(Identifier identifier) const {
+    std::vector<Identifier>::const_iterator iterator = std::find(components.begin(), components.end(), identifier);
 
     return iterator != components.end();
 }

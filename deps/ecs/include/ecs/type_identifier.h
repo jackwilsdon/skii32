@@ -1,6 +1,8 @@
 #ifndef _TYPE_IDENTIFIER_H_
 #define _TYPE_IDENTIFIER_H_
 
+#include <cstddef>
+
 #include "platform.h"
 
 typedef std::size_t Identifier;
