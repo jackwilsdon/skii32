@@ -15,10 +15,12 @@ ComponentSet::ComponentSet(const ComponentSet &set) {
 }
 
 ComponentSet::~ComponentSet() {
-    std::vector<ComponentData>::iterator iterator;
+    if (delete_components) {
+        std::vector<ComponentData>::iterator iterator;
 
-    for (iterator = components.begin(); iterator < components.end(); iterator++) {
-        delete iterator->component;
+        for (iterator = components.begin(); iterator < components.end(); iterator++) {
+            delete iterator->component;
+        }
     }
 }
 
