@@ -40,6 +40,8 @@ public:
         return components.get_component<T>();
     }
 
+    bool operator==(const Entity &other);
+
 private:
     Identifier identifier;
 
