@@ -20,6 +20,4 @@ private:
     static Identifier next_identifier;
 };
 
-TypeIdentifier::Identifier TypeIdentifier::next_identifier = 0;
-
 #endif
