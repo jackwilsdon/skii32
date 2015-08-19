@@ -7,13 +7,15 @@
 #include "logger/logger.h"
 #include "logger/destinations/console_destination.h"
 
-#include "ecs/component_set.h"
+#include "ecs/entity.h"
 
 class MyComponent : public Component {
 public:
-    void log(Logger logger) {
-        logger.log(LogLevel::WARN, "Hello from MyComponent at %p!", this);
+    MyComponent(const char *message) {
+        this->message = message;
     }
+
+    const char *message;
 };
 
 int main(void) {
@@ -31,11 +33,10 @@ int main(void) {
     logger.set_level(LogLevel::DEBUG);
 #endif
 
-    ComponentSet set;
+    Entity e;
 
-    set.add_component(new MyComponent());
-    set.get_component<MyComponent>()->log(logger);
-    set.get_component<MyComponent>()->log(logger);
+    e.add_component<MyComponent>("Hello!");
+    logger.log("MyComponent says \"%s\"", e.get_component<MyComponent>()->message);
 
     return EXIT_SUCCESS;
 }
