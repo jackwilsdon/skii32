@@ -22,7 +22,7 @@ ComponentSet::~ComponentSet() {
     }
 }
 
-bool ComponentSet::has_component(Identifier identifier) {
+bool ComponentSet::has_component(TypeIdentifier::Identifier identifier) {
     struct ComponentData component_data;
 
     component_data.component = NULL;
@@ -31,7 +31,7 @@ bool ComponentSet::has_component(Identifier identifier) {
     return std::find(components.begin(), components.end(), component_data) != components.end();
 }
 
-void ComponentSet::add_component(Component *component, Identifier identifier) {
+void ComponentSet::add_component(Component *component, TypeIdentifier::Identifier identifier) {
     if (has_component(identifier)) {
         throw ComponentAlreadyPresentException(this);
     }
@@ -44,7 +44,7 @@ void ComponentSet::add_component(Component *component, Identifier identifier) {
     components.push_back(component_data);
 }
 
-void ComponentSet::remove_component(Identifier identifier) {
+void ComponentSet::remove_component(TypeIdentifier::Identifier identifier) {
     if (!has_component(identifier)) {
         throw ComponentNotFoundException(this);
     }
@@ -57,7 +57,7 @@ void ComponentSet::remove_component(Identifier identifier) {
     components.erase(std::remove(components.begin(), components.end(), component_data));
 }
 
-Component *ComponentSet::get_component(Identifier identifier) {
+Component *ComponentSet::get_component(TypeIdentifier::Identifier identifier) {
     if (!has_component(identifier)) {
         throw ComponentNotFoundException(this);
     }

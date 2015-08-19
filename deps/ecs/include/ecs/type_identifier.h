@@ -5,10 +5,10 @@
 
 #include "platform/platform.h"
 
-typedef std::size_t Identifier;
-
 class EXPORT TypeIdentifier {
 public:
+    typedef std::size_t Identifier;
+
     template<typename T>
     static Identifier get_identifier() {
         static const Identifier current_identifier = next_identifier++;
@@ -20,6 +20,6 @@ private:
     static Identifier next_identifier;
 };
 
-Identifier TypeIdentifier::next_identifier = 0;
+TypeIdentifier::Identifier TypeIdentifier::next_identifier = 0;
 
 #endif

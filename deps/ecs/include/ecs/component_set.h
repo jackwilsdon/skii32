@@ -59,17 +59,17 @@ public:
 private:
     struct ComponentData {
         Component *component;
-        Identifier identifier;
+        TypeIdentifier::Identifier identifier;
 
         bool operator==(const ComponentData &other) {
             return identifier == other.identifier;
         }
     };
 
-    bool has_component(Identifier identifier);
-    void add_component(Component *component, Identifier identifier);
-    void remove_component(Identifier identifier);
-    Component *get_component(Identifier identifier);
+    bool has_component(TypeIdentifier::Identifier identifier);
+    void add_component(Component *component, TypeIdentifier::Identifier identifier);
+    void remove_component(TypeIdentifier::Identifier identifier);
+    Component *get_component(TypeIdentifier::Identifier identifier);
 
     std::vector<ComponentData> components;
     bool delete_components;
