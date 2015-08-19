@@ -9,6 +9,7 @@ require_cxx11()
 set(ecs_SOURCES
     src/component_set.cc
     src/component_set_exceptions.cc
+    src/entity.cc
     src/type_identifier.cc
 )
 
