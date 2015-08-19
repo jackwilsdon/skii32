@@ -15,7 +15,30 @@ public:
 
     Identifier get_identifier() const;
 
+    template<typename T>
+    bool has_component() {
+        return components.has_component<T>();
+    }
 
+    template<typename T>
+    T *add_component(T* component) {
+        return components.add_component(component);
+    }
+
+    template<typename T, typename... Args>
+    T *add_component(Args&&... args) {
+        return components.add_component<T>(std::forward<Args>(args)...);
+    }
+
+    template<typename T>
+    void remove_component() {
+        return components.remove_component<T>();
+    }
+
+    template<typename T>
+    T *get_component() {
+        return components.get_component<T>();
+    }
 
 private:
     Identifier identifier;
