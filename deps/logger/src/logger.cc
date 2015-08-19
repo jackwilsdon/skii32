@@ -59,7 +59,11 @@ void Logger::vlog(LogLevel level, std::string format, va_list args) const {
     }
 
     const char *format_str = format.c_str();
-    int formatted_length = VPRINTF_LENGTH(format_str, args) + 1;
+
+    va_list args_copy;
+    va_copy(args_copy, args);
+
+    int formatted_length = VPRINTF_LENGTH(format_str, args_copy) + 1;
 
     if (formatted_length < 0) {
         return;
@@ -70,6 +74,8 @@ void Logger::vlog(LogLevel level, std::string format, va_list args) const {
     if (formatted_str == NULL) {
         return;
     }
+
+    va_copy(args_copy, args);
 
 	if (VSPRINTF_SAFE(formatted_str, formatted_length, format_str, args) < 0) {
         free(formatted_str);
