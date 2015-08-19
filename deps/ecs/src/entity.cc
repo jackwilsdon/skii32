@@ -6,7 +6,7 @@ Entity::Entity() {
 
 Entity::Entity(const Entity &entity) {
     identifier = entity.identifier;
-    components = entity.components;
+    components = ComponentSet(entity.components);
 }
 
 Entity::Identifier Entity::get_identifier() const {
