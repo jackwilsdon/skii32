@@ -11,7 +11,7 @@ private:
     const char *progname;
 };
 
-MAsserter _global_masserter;
+extern MAsserter _global_masserter;
 
 #define massert_setup(argc, argv) (_global_masserter = (argc > 0) ? MAsserter(argv[0]) : MAsserter() )
 #define massert(assertion, message) ((assertion) ? ((void) 0) : _global_masserter.assert(#assertion, message, __FILE__, __LINE__, __func__))

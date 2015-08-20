@@ -1,14 +1,7 @@
 #include "massert/massert.h"
 
-#include <cstring>
 #include <cstdio>
 #include <cstdlib>
-
-#ifdef _WIN32
-    #define PATH_SEPARATOR '\\'
-#else
-    #define PATH_SEPARATOR '/'
-#endif
 
 MAsserter::MAsserter() : MAsserter(nullptr) {}
 MAsserter::MAsserter(char *progname) : progname(progname) {}
@@ -19,3 +12,5 @@ void MAsserter::assert(const char *assertion, const char *message, const char *f
     printf("Aborted\n");
     std::exit(EXIT_FAILURE);
 }
+
+MAsserter _global_masserter;
