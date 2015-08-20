@@ -33,4 +33,4 @@ endforeach(INCLUDE_PATH)
 add_executable(skii32 ${skii32_SOURCES} ${skii32_INCLUDE_FILES})
 
 # Add dependencies
-target_link_libraries(skii32 ecs logger)
+target_link_libraries(skii32 ecs logger massert)
