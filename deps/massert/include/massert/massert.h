@@ -1,7 +1,9 @@
 #ifndef _MASSERT_H_
 #define _MASSERT_H_
 
-class MAsserter {
+#include "massert/export.h"
+
+class MASSERT_EXPORT MAsserter {
 public:
     MAsserter();
     MAsserter(char *progname);
@@ -11,7 +13,7 @@ private:
     const char *progname;
 };
 
-extern MAsserter _global_masserter;
+extern MASSERT_EXPORT MAsserter _global_masserter;
 
 #define massert_setup(argc, argv) (_global_masserter = (argc > 0) ? MAsserter(argv[0]) : MAsserter() )
 #define massert(assertion, message) ((assertion) ? ((void) 0) : _global_masserter.assert(#assertion, message, __FILE__, __LINE__, __func__))
