@@ -4,11 +4,11 @@
 #include <string>
 
 #include "logger/log_level.h"
-#include "logger/platform.h"
+#include "logger/export.h"
 
 class Logger;
 
-class EXPORT LogDestination {
+class LOGGER_EXPORT LogDestination {
 public:
     LogDestination(Logger *logger);
     LogDestination(const LogDestination &destination);

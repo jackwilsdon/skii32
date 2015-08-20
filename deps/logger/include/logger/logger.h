@@ -5,11 +5,11 @@
 #include <cstdarg>
 
 #include "logger/log_level.h"
-#include "logger/platform.h"
+#include "logger/export.h"
 
 class LogDestination;
 
-class EXPORT Logger {
+class LOGGER_EXPORT Logger {
 public:
     Logger();
     Logger(const Logger &logger);

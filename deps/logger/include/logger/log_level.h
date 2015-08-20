@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "logger/platform.h"
+#include "logger/export.h"
 
 enum class LogLevel {
     DEBUG,
@@ -13,6 +13,6 @@ enum class LogLevel {
     FATAL
 };
 
-EXPORT std::string LogLevel_name(LogLevel level, bool sentence_case = true);
+LOGGER_EXPORT std::string LogLevel_name(LogLevel level, bool sentence_case = true);
 
 #endif

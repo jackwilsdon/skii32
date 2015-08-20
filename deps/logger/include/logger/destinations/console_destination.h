@@ -5,11 +5,11 @@
 
 #include "logger/log_destination.h"
 #include "logger/log_level.h"
-#include "logger/platform.h"
+#include "logger/export.h"
 
 class Logger;
 
-class EXPORT ConsoleDestination : public LogDestination {
+class LOGGER_EXPORT ConsoleDestination : public LogDestination {
 public:
     ConsoleDestination(Logger *logger);
     ConsoleDestination(const ConsoleDestination &destination);

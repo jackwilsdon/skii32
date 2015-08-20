@@ -2,6 +2,7 @@
 #include <cstdio>
 
 #include "logger/destinations/console_destination.h"
+#include "logger/platform.h"
 
 std::string get_time_string() {
     time_t currtime;
