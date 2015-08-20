@@ -3,9 +3,9 @@
 
 #include <cstddef>
 
-#include "platform/platform.h"
+#include "ecs/export.h"
 
-class EXPORT TypeIdentifier {
+class ECS_EXPORT TypeIdentifier {
 public:
     typedef std::size_t Identifier;
 

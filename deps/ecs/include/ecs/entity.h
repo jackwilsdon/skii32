@@ -4,9 +4,9 @@
 #include "ecs/type_identifier.h"
 #include "ecs/component_set.h"
 
-#include "platform/platform.h"
+#include "ecs/export.h"
 
-class EXPORT Entity {
+class ECS_EXPORT Entity {
 public:
     typedef TypeIdentifier::Identifier Identifier;
 

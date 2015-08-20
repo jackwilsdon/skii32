@@ -7,9 +7,9 @@
 #include <type_traits>
 #include <vector>
 
-#include "platform/platform.h"
+#include "ecs/export.h"
 
-class EXPORT ComponentSet {
+class ECS_EXPORT ComponentSet {
 public:
     ComponentSet();
     ComponentSet(const ComponentSet &set);
