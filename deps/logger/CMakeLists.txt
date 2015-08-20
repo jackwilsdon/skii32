@@ -29,6 +29,3 @@ add_library(logger SHARED ${logger_SOURCES} ${logger_INCLUDE_FILES})
 
 # Add include directories to library
 target_include_directories(logger PUBLIC ${logger_INCLUDES})
-
-# Add dependencies
-target_link_libraries(logger platform)

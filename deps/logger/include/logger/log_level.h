@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "platform/platform.h"
+#include "logger/platform.h"
 
 enum class LogLevel {
     DEBUG,

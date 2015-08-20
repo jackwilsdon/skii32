@@ -5,8 +5,7 @@
 
 #include "logger/log_destination.h"
 #include "logger/log_level.h"
-
-#include "platform/platform.h"
+#include "logger/platform.h"
 
 class Logger;
 
