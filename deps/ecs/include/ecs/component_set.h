@@ -17,14 +17,14 @@ public:
 
     template<typename T>
     bool has_component() {
-        static_assert(std::is_base_of<Component, T>(), "T is not a Component");
+        static_assert(std::is_base_of<Component, T>::value, "T is not a Component");
 
         return has_component(TypeIdentifier::get_identifier<T>());
     }
 
     template<typename T>
     T *add_component(T* component) {
-        static_assert(std::is_base_of<Component, T>(), "T is not a Component");
+        static_assert(std::is_base_of<Component, T>::value, "T is not a Component");
 
         add_component(component, TypeIdentifier::get_identifier<T>());
 
@@ -33,7 +33,7 @@ public:
 
     template<typename T, typename... Args>
     T *add_component(Args&&... args) {
-        static_assert(std::is_base_of<Component, T>(), "T is not a Component");
+        static_assert(std::is_base_of<Component, T>::value, "T is not a Component");
 
         T *component = new T(std::forward<Args>(args)...);
 
@@ -44,14 +44,14 @@ public:
 
     template<typename T>
     void remove_component() {
-        static_assert(std::is_base_of<Component, T>(), "T is not a Component");
+        static_assert(std::is_base_of<Component, T>::value, "T is not a Component");
 
         remove_component(TypeIdentifier::get_identifier<T>());
     }
 
     template<typename T>
     T *get_component() {
-        static_assert(std::is_base_of<Component, T>(), "T is not a Component");
+        static_assert(std::is_base_of<Component, T>::value, "T is not a Component");
 
         return static_cast<T *>(get_component(TypeIdentifier::get_identifier<T>()));
     }
