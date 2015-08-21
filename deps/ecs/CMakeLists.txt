@@ -9,7 +9,6 @@ require_cxx11()
 
 set(ecs_SOURCES
     src/component_set.cc
-    src/component_set_exceptions.cc
     src/entity.cc
     src/type_identifier.cc
     src/world.cc
@@ -35,3 +34,6 @@ generate_export_header(ecs EXPORT_FILE_NAME include/ecs/export.h)
 
 # Add include directories to library
 target_include_directories(ecs PUBLIC ${ecs_INCLUDES})
+
+# Add dependencies
+target_link_libraries(ecs massert)

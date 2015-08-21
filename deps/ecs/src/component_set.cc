@@ -1,7 +1,8 @@
 #include "ecs/component_set.h"
 
 #include "ecs/type_identifier.h"
-#include "ecs/component_set_exceptions.h"
+
+#include "massert/massert.h"
 
 #include <algorithm>
 
@@ -34,9 +35,7 @@ bool ComponentSet::has_component(TypeIdentifier::Identifier identifier) {
 }
 
 void ComponentSet::add_component(Component *component, TypeIdentifier::Identifier identifier) {
-    if (has_component(identifier)) {
-        throw ComponentAlreadyPresentException(this);
-    }
+    massert(!has_component(identifier), "component already present in set");
 
     struct ComponentData component_data;
 
@@ -47,9 +46,7 @@ void ComponentSet::add_component(Component *component, TypeIdentifier::Identifie
 }
 
 void ComponentSet::remove_component(TypeIdentifier::Identifier identifier) {
-    if (!has_component(identifier)) {
-        throw ComponentNotFoundException(this);
-    }
+    massert(has_component(identifier), "component not present in set");
 
     struct ComponentData component_data;
 
@@ -60,9 +57,7 @@ void ComponentSet::remove_component(TypeIdentifier::Identifier identifier) {
 }
 
 Component *ComponentSet::get_component(TypeIdentifier::Identifier identifier) {
-    if (!has_component(identifier)) {
-        throw ComponentNotFoundException(this);
-    }
+    massert(has_component(identifier), "component not present in set");
 
     struct ComponentData component_data;
 
