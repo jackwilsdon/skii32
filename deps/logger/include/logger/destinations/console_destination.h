@@ -17,6 +17,8 @@ public:
     bool is_colored() const;
     void set_colored(bool colored);
 
+    void auto_set_colored();
+
     void log(LogLevel level, std::string message) const;
 
 private:

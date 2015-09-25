@@ -1,8 +1,13 @@
 #include <time.h>
+#include <cstdlib>
 #include <cstdio>
 
 #include "logger/destinations/console_destination.h"
 #include "logger/platform.h"
+
+#if defined(__APPLE__) || defined(__linux)
+    #define __CONSOLE_COLOR_SUPPORTED
+#endif
 
 std::string get_time_string() {
     time_t currtime;
@@ -58,6 +63,14 @@ bool ConsoleDestination::is_colored() const {
 
 void ConsoleDestination::set_colored(bool colored) {
     this->colored = colored;
+}
+
+void ConsoleDestination::auto_set_colored() {
+#ifdef __CONSOLE_COLOR_SUPPORTED
+    set_colored(true);
+# else
+    set_colored(false);
+#endif
 }
 
 void ConsoleDestination::log(LogLevel level, std::string message) const {
