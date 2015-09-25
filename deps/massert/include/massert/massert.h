@@ -15,7 +15,7 @@ private:
 
 extern MASSERT_EXPORT MAsserter _global_masserter;
 
-#define massert_setup(argc, argv) (_global_masserter = (argc > 0) ? MAsserter(argv[0]) : MAsserter() )
+#define massert_setup(argc, argv) (_global_masserter = (argc > 0) ? MAsserter(argv[0]) : _global_masserter )
 #define massert(assertion, message) ((assertion) ? ((void) 0) : _global_masserter.assert(#assertion, message, __FILE__, __LINE__, __func__))
 
 #endif
