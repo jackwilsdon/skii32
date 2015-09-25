@@ -1,3 +1,5 @@
+#include <cstdlib>
+
 #include "logger/logger.h"
 #include "logger/destinations/console_destination.h"
 #include "logger/log_level.h"
