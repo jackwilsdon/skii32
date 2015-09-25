@@ -1,8 +1,6 @@
 #include <cstdlib>
 
-#ifdef __unix
-    #include <unistd.h>
-#endif
+#include "massert/massert.h"
 
 #include "logger/logger.h"
 #include "logger/destinations/console_destination.h"
@@ -18,20 +16,10 @@ public:
     const char *message;
 };
 
-int main(void) {
+int main(int argc, char *argv[]) {
     Logger logger;
 
-#ifdef __unix
-    if(isatty(STDOUT_FILENO)) {
-        ((ConsoleDestination *) logger.get_destination())->set_colored(true);
-    }
-#endif
-
-#ifdef NDEBUG
-    logger.set_level(LogLevel::WARN);
-#else
-    logger.set_level(LogLevel::DEBUG);
-#endif
+    ((ConsoleDestination *) logger.get_destination())->set_colored(true);
 
     Entity e;
 
