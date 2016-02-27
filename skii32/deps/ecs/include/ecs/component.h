@@ -3,6 +3,8 @@
 
 #include "ecs/export.h"
 
-class ECS_EXPORT Component {};
+namespace ecs {
+    class ECS_EXPORT Component {};
+}
 
 #endif

@@ -7,7 +7,7 @@
 
 #include "ecs/entity.h"
 
-class MyComponent : public Component {
+class MyComponent : public ecs::Component {
 public:
     MyComponent(const char *message) {
         this->message = message;
@@ -19,9 +19,9 @@ public:
 int main(int argc, char *argv[]) {
     Logger logger;
 
-    ((ConsoleDestination *) logger.get_destination())->set_colored(true);
+    ((ConsoleDestination *) logger.get_destination())->set_colored(false);
 
-    Entity e;
+    ecs::Entity e;
 
     e.add_component<MyComponent>("Hello!");
     logger.log("MyComponent says \"%s\"", e.get_component<MyComponent>()->message);
