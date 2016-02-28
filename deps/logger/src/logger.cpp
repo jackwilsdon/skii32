@@ -73,7 +73,7 @@ namespace logger {
     }
 
     void Logger::vlog(Level level, std::string format, va_list args){
-        if (level < minimumLevel) {
+        if (level < getMinimumLevel()) {
             return;
         }
 
@@ -106,7 +106,7 @@ namespace logger {
 
         free(formattedCharArray);
 
-        destination->log(level, formattedString);
+        getDestination().log(level, formattedString);
     }
 
     void Logger::useDefaultMinimumLevel() {
@@ -118,8 +118,8 @@ namespace logger {
     }
 
     void Logger::removeDestination() {
-        if (deleteDestination) {
-            delete destination;
+        if (shouldDeleteDestination()) {
+            delete &getDestination();
         }
     }
 }
