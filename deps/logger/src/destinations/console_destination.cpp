@@ -1,9 +1,5 @@
 #include "logger/destinations/console_destination.h"
 
-#if defined(__APPLE__) || defined(__linux)
-#define __CONSOLE_COLOR_SUPPORTED
-#endif
-
 namespace logger {
     ConsoleDestination::ConsoleDestination(Logger &logger) : Destination(logger) {
 

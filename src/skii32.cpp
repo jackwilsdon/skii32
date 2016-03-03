@@ -1,19 +1,21 @@
 #include <cstdlib>
-#include <ecs/type_identifier.h>
 
 #include "logger/logger.h"
+#include "ecs/component_bag.h"
 
-class HelloClass {};
-class GoodbyeClass {};
+class NotAComponent {};
+class FirstComponent : public ecs::Component {};
+class SecondComponent : public ecs::Component {};
 
 int main(int argc, char *argv[]) {
-    logger::Logger l;
+    logger::Logger log;
+    ecs::ComponentBag bag;
 
-    l.log(logger::Level::INFO, "Type Identifier for HelloClass: %d", ecs::TypeIdentifier::getIdentifier<HelloClass>());
-    l.log(logger::Level::INFO, "Type Identifier for GoodbyeClass: %d", ecs::TypeIdentifier::getIdentifier<GoodbyeClass>());
+    bag.addComponent<FirstComponent>();
+    log.log("Contains FirstComponent: %s", bag.hasComponent<FirstComponent>() ? "true" : "false");
 
-    l.log(logger::Level::INFO, "Type Identifier for HelloClass: %d", ecs::TypeIdentifier::getIdentifier<HelloClass>());
-    l.log(logger::Level::INFO, "Type Identifier for GoodbyeClass: %d", ecs::TypeIdentifier::getIdentifier<GoodbyeClass>());
+    bag.removeComponent<FirstComponent>();
+    log.log("Contains FirstComponent: %s", bag.hasComponent<FirstComponent>() ? "true" : "false");
 
     return EXIT_SUCCESS;
 }
