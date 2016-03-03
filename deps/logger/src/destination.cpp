@@ -1,5 +1,4 @@
-#include <logger/destination.h>
-#include <logger/level.h>
+#include "logger/destination.h"
 
 namespace logger {
     Destination::Destination(Logger &logger) {
