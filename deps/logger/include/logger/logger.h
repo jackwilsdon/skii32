@@ -3,26 +3,26 @@
 
 #include <string>
 
-#include "logger/export.h"
 #include "logger/level.h"
 
 namespace logger {
     class Destination;
 
-    class LOGGER_EXPORT Logger {
+    class LOGGER_EXPORT Logger final {
     public:
         Logger(Level minimumLevel, Destination &destination, bool deleteDestination);
         Logger(Level minimumLevel);
         Logger(Destination &destination, bool deleteDestination);
         Logger();
 
-        Logger(const Logger &logger) = delete;
+        Logger(const Logger &logger);
+
         ~Logger();
 
         Level getMinimumLevel() const;
         void setMinimumLevel(Level minimumLevel);
 
-        Destination &getDestination() const;
+        Destination & getDestination() const;
         bool shouldDeleteDestination() const;
         void setDestination(Destination &destination, bool deleteDestination);
 

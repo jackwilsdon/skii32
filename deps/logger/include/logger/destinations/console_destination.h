@@ -7,10 +7,11 @@ namespace logger {
     class LOGGER_EXPORT ConsoleDestination : public Destination {
     public:
         ConsoleDestination(Logger& logger);
-        ConsoleDestination(const ConsoleDestination &destination);
         ~ConsoleDestination();
 
         void log(Level level, std::string message);
+
+        virtual Destination* clone() const;
     };
 }
 

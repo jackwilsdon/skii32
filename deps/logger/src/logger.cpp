@@ -25,6 +25,11 @@ namespace logger {
         useDefaultDestination();
     }
 
+    Logger::Logger(const Logger &logger) {
+        setMinimumLevel(logger.getMinimumLevel());
+        setDestination(*logger.getDestination().clone(), true);
+    }
+
     Logger::~Logger() {
         removeDestination();
     }
@@ -89,7 +94,7 @@ namespace logger {
             return;
         }
 
-        char *formattedCharArray = (char *) malloc(formattedLength);
+        char *formattedCharArray = (char *) malloc((formattedLength + 1) * sizeof(char));
 
         if (formattedCharArray == NULL) {
             return;

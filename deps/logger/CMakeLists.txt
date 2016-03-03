@@ -13,6 +13,7 @@ set(logger_SOURCES
 
 set(logger_INCLUDES
     include
+    ${CMAKE_CURRENT_BINARY_DIR}/include
 )
 
 # Iterate each include file and add it to logger_INCLUDE_FILES
@@ -38,3 +39,5 @@ generate_export_header(logger EXPORT_FILE_NAME include/logger/export.h)
 
 # Add include directories to library
 target_include_directories(logger PUBLIC ${logger_INCLUDES})
+
+message(${CMAKE_CURRENT_BINARY_DIR})

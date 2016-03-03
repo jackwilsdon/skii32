@@ -6,10 +6,6 @@ namespace logger {
         this->logger = &logger;
     }
 
-    Destination::Destination(const Destination &destination) {
-        this->logger = &destination.getLogger();
-    }
-
     Destination::~Destination() {
 
     }

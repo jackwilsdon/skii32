@@ -1,15 +1,19 @@
 #include <cstdlib>
+#include <ecs/type_identifier.h>
 
 #include "logger/logger.h"
+
+class HelloClass {};
+class GoodbyeClass {};
 
 int main(int argc, char *argv[]) {
     logger::Logger l;
 
-    l.log(logger::Level::DEBUG, "Debug");
-    l.log(logger::Level::INFO, "Information");
-    l.log(logger::Level::WARN, "Warning");
-    l.log(logger::Level::ERROR, "Error");
-    l.log(logger::Level::FATAL, "Fatal");
+    l.log(logger::Level::INFO, "Type Identifier for HelloClass: %d", ecs::TypeIdentifier::getIdentifier<HelloClass>());
+    l.log(logger::Level::INFO, "Type Identifier for GoodbyeClass: %d", ecs::TypeIdentifier::getIdentifier<GoodbyeClass>());
+
+    l.log(logger::Level::INFO, "Type Identifier for HelloClass: %d", ecs::TypeIdentifier::getIdentifier<HelloClass>());
+    l.log(logger::Level::INFO, "Type Identifier for GoodbyeClass: %d", ecs::TypeIdentifier::getIdentifier<GoodbyeClass>());
 
     return EXIT_SUCCESS;
 }
