@@ -6,7 +6,7 @@
 #include "ecs/export.h"
 
 namespace ecs {
-    class ECS_EXPORT TypeIdentifier {
+    class ECS_EXPORT TypeIdentifier final {
     public:
         typedef size_t Identifier;
 
