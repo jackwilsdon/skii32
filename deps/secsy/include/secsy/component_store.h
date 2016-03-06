@@ -15,10 +15,14 @@ namespace secsy {
     public:
         ~ComponentStore();
 
+        bool HasComponent(Identifier identifier);
+
         template<typename T>
         bool HasComponent() {
             return HasComponent(GetIdentifier<T>());
         }
+
+        Component *GetComponent(Identifier identifier);
 
         template<typename T>
         T *GetComponent() {
@@ -40,6 +44,8 @@ namespace secsy {
             return GetComponent<T>();
         }
 
+        bool RemoveComponent(Identifier identifier);
+
         template<typename T>
         bool RemoveComponent() {
             return RemoveComponent(GetIdentifier<T>());
@@ -53,10 +59,7 @@ namespace secsy {
             return TypeIdentifier::GetIdentifier<T>();
         }
 
-        bool HasComponent(Identifier identifier);
-        Component *GetComponent(Identifier identifier);
         bool AddComponentInstance(Identifier identifier, Component &component);
-        bool RemoveComponent(Identifier identifier);
 
         std::map<Identifier, Component *> components;
     };
