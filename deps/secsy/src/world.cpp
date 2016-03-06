@@ -58,7 +58,7 @@ namespace secsy {
 
         // we use a bitwise and instead of a conditional and to ensure both erase methods are
         // called but the result is the same as if we used a conditional
-        return (entities.erase(identifier) & components.erase(identifier)) && !HasEntity(identifier);
+        return (entities.erase(identifier) & components.erase(identifier)) == 1;
     }
 
     bool World::RemoveEntity(Entity &entity) {
