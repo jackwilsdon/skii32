@@ -15,12 +15,19 @@ require_cxx11()
 add_subdirectory(deps)
 
 set(skii32_SOURCES
-        src/skii32.cpp
+    src
 )
 
 set(skii32_INCLUDES
     include
 )
+
+# Iterate each include file and add it to skii32_SOURCE_FILES
+foreach(SOURCE_PATH ${skii32_SOURCES})
+    file(GLOB_RECURSE SOURCE_FILES ${SOURCE_PATH}/*)
+
+    list(APPEND skii32_SOURCE_FILES ${SOURCE_FILES})
+endforeach(SOURCE_PATH)
 
 # Iterate each include file and add it to logger_INCLUDE_FILES
 foreach(INCLUDE_PATH ${logger_INCLUDES})
@@ -30,7 +37,7 @@ foreach(INCLUDE_PATH ${logger_INCLUDES})
 endforeach(INCLUDE_PATH)
 
 # Add source to executable
-add_executable(skii32 ${skii32_SOURCES} ${skii32_INCLUDE_FILES})
+add_executable(skii32 ${skii32_SOURCES} ${skii32_SOURCE_FILES} ${skii32_INCLUDE_FILES})
 
 # Add dependencies
-target_link_libraries(skii32 ecs logger)
+target_link_libraries(skii32 secsy)
