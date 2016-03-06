@@ -19,14 +19,14 @@ namespace secsy {
 
         template<typename T>
         bool HasComponent() {
-            return HasComponent(GetIdentifier<T>());
+            return HasComponent(Component::GetIdentifier<T>());
         }
 
         Component *GetComponent(Identifier identifier);
 
         template<typename T>
         T *GetComponent() {
-            return static_cast<T *>(GetComponent(GetIdentifier<T>()));
+            return static_cast<T *>(GetComponent(Component::GetIdentifier<T>()));
         }
 
         template<typename T, typename ...A>
@@ -37,7 +37,7 @@ namespace secsy {
 
             T *instance = new T(std::forward<A>(args)...);
 
-            if (!AddComponentInstance(GetIdentifier<T>(), *instance)) {
+            if (!AddComponentInstance(Component::GetIdentifier<T>(), *instance)) {
                 return nullptr;
             }
 
@@ -48,17 +48,10 @@ namespace secsy {
 
         template<typename T>
         bool RemoveComponent() {
-            return RemoveComponent(GetIdentifier<T>());
+            return RemoveComponent(Component::GetIdentifier<T>());
         }
 
     private:
-        template<typename T>
-        Identifier GetIdentifier() {
-            static_assert(std::is_base_of<Component, T>::value, "T must be a component");
-
-            return TypeIdentifier::GetIdentifier<T>();
-        }
-
         bool AddComponentInstance(Identifier identifier, Component &component);
 
         std::map<Identifier, Component *> components;
