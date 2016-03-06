@@ -16,6 +16,7 @@ namespace secsy {
         Identifier GetIdentifier();
         World *GetWorld();
         bool IsValid();
+        ComponentStore *GetComponentStore();
 
         template<typename T>
         bool HasComponent() {
@@ -54,8 +55,6 @@ namespace secsy {
         }
 
     private:
-        ComponentStore *GetComponentStore();
-
         Identifier identifier;
         World *world;
     };
