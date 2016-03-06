@@ -24,5 +24,15 @@ namespace secsy {
         return GetWorld()->GetComponentStore(identifier);
     }
 
+    bool Entity::HasComponent(Identifier identifier) {
+        return GetComponentStore()->HasComponent(identifier);
+    }
 
+    Component *Entity::GetComponent(Identifier identifier) {
+        return GetComponentStore()->GetComponent(identifier);
+    }
+
+    bool Entity::RemoveComponent(Identifier identifier) {
+        return GetComponentStore()->RemoveComponent(identifier);
+    }
 }

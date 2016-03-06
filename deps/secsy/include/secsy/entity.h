@@ -18,6 +18,8 @@ namespace secsy {
         bool IsValid();
         ComponentStore *GetComponentStore();
 
+        bool HasComponent(Identifier identifier);
+
         template<typename T>
         bool HasComponent() {
             if (!IsValid()) {
@@ -26,6 +28,8 @@ namespace secsy {
 
             return GetComponentStore()->HasComponent<T>();
         }
+
+        Component *GetComponent(Identifier identifier);
 
         template<typename T>
         T *GetComponent() {
@@ -44,6 +48,8 @@ namespace secsy {
 
             return GetComponentStore()->AddComponent<T>(std::forward(args)...);
         };
+
+        bool RemoveComponent(Identifier identifier);
 
         template<typename T>
         bool RemoveComponent() {
