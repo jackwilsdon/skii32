@@ -13,7 +13,7 @@ namespace secsy {
     }
 
     bool Entity::IsValid() {
-        return world->HasEntity(identifier);
+        return world->HasEntity(*this);
     }
 
     ComponentStore *Entity::GetComponentStore() {
@@ -21,7 +21,7 @@ namespace secsy {
             return nullptr;
         }
 
-        return GetWorld()->GetComponentStore(identifier);
+        return GetWorld()->GetComponentStore(*this);
     }
 
     bool Entity::HasComponent(Identifier identifier) {
